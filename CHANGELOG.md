@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.0.1
+
+- Updated package repository, homepage, and live documentation URLs in `pubspec.yaml`.
+- Added interactive HTML Web Documentation with Dark/Light theme toggle & custom brand favicon.
+- Fixed preview banner image rendering on `pub.dev` using absolute raw GitHub content URLs.
+- Enhanced example gallery app with Smart AI generator tab and category filters.
+- Optimized text contrast and visibility across all documentation themes.
+
 ## 1.0.0
 
 - Initial production release of **NavoraX: Bottom Navigation Design System for Flutter**.
