@@ -10,7 +10,7 @@
 > 🌐 **Interactive Web Documentation & Parameter Dictionary**:  
 > 👉 Check out the live interactive documentation at <a href="https://imcoderaditya.github.io/NavoraX/doc/" target="_blank"><strong>NavoraX Documentation</strong></a>!
 
-![NavoraX Preview Banner](assets/navorax_preview_banner.jpg)
+![NavoraX Preview Banner](https://raw.githubusercontent.com/imCoderAditya/NavoraX/main/assets/navorax_preview_banner.jpg)
 
 **NavoraX** is an enterprise-grade, highly customizable **Bottom Navigation Design System** for Flutter. Rather than just offering a basic collection of static widgets, NavoraX provides a powerful **Navigation Engine**, **1000+ Template Registry**, **Navigation Composer (`NavoraXNavBuilder`)**, **Animation & Physics Engine**, **Adaptive Mobile Safe Area System**, **Context-Aware Navigation Controller**, and **Smart AI Generation** abstractions.
 
