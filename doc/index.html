@@ -26,6 +26,65 @@
       --text-muted: #94A3B8;
       --border: rgba(255, 255, 255, 0.12);
       --border-accent: rgba(99, 102, 241, 0.4);
+      --search-bg: rgba(15, 23, 42, 0.8);
+      --th-bg: rgba(15, 23, 42, 0.95);
+      --code-bg: #060911;
+      --code-text-bg: rgba(99, 102, 241, 0.18);
+      --code-text-color: #A5B4FC;
+      --footer-bg: rgba(9, 13, 22, 0.9);
+      --simulator-bg: linear-gradient(145deg, #111827, #0F172A);
+      --phone-bg: #090D16;
+      --phone-border: #1E293B;
+      --phone-nav-bg: rgba(30, 41, 59, 0.85);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #F1F5F9;
+      --bg-glass: rgba(248, 250, 252, 0.9);
+      --accent-indigo: #4F46E5;
+      --accent-glow: #6366F1;
+      --accent-cyan: #0284C7;
+      --accent-emerald: #059669;
+      --accent-rose: #E11D48;
+      --accent-amber: #D97706;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --border: rgba(0, 0, 0, 0.1);
+      --border-accent: rgba(79, 70, 229, 0.35);
+      --search-bg: #FFFFFF;
+      --th-bg: #F1F5F9;
+      --code-bg: #1E293B;
+      --code-text-bg: rgba(79, 70, 229, 0.12);
+      --code-text-color: #4338CA;
+      --footer-bg: #F1F5F9;
+      --simulator-bg: linear-gradient(145deg, #FFFFFF, #F1F5F9);
+      --phone-bg: #F8FAFC;
+      --phone-border: #CBD5E1;
+      --phone-nav-bg: rgba(255, 255, 255, 0.95);
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-indigo);
+      transform: scale(1.08);
     }
 
     * {
@@ -451,7 +510,12 @@
       <li><a href="#templates">1000+ Templates</a></li>
       <li><a href="#ai">AI & Engine</a></li>
     </ul>
-    <a href="https://github.com/imCoderAditya/NavoraX" target="_blank" class="btn-github">View GitHub Repository</a>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <span id="themeIcon">🌙</span>
+      </button>
+      <a href="https://github.com/imCoderAditya/NavoraX" target="_blank" class="btn-github">View GitHub Repository</a>
+    </div>
   </header>
 
   <div class="hero">
@@ -802,6 +866,32 @@
   </footer>
 
   <script>
+    function initTheme() {
+      const savedTheme = localStorage.getItem('navorax-theme');
+      if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.getElementById('themeIcon').innerText = '☀️';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('themeIcon').innerText = '🌙';
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('navorax-theme', 'dark');
+        document.getElementById('themeIcon').innerText = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('navorax-theme', 'light');
+        document.getElementById('themeIcon').innerText = '☀️';
+      }
+    }
+
+    initTheme();
+
     function setSimTab(idx, icon, title) {
       document.getElementById('simIdx').innerText = idx;
       document.getElementById('simIcon').innerText = icon;
