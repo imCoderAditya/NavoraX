@@ -8,7 +8,7 @@
 [![Style: Extremely Customizable](https://img.shields.io/badge/Style-1000%2B_Templates-purple.svg)](#1000-ready-made-templates)
 
 > 🌐 **Interactive Web Documentation & Parameter Dictionary**:  
-> 👉 Check out the live interactive documentation at [**NavoraX Docs**](https://imcoderaditya.github.io/NavoraX/)!
+> 👉 Check out the live interactive documentation at [**NavoraX Documentation**](https://imcoderaditya.github.io/NavoraX/)!
 
 ![NavoraX Preview Banner](assets/navorax_preview_banner.jpg)
 
