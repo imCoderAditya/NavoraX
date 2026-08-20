@@ -196,12 +196,26 @@
     }
 
     .hero p {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      margin-bottom: 2.5rem;
       max-width: 850px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 1.5rem auto;
+      line-height: 1.75;
+    }
+
+    .hero-link {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed var(--accent-cyan);
+      transition: all 0.2s ease;
+    }
+
+    .hero-link:hover {
+      color: var(--accent-glow);
+      border-bottom-style: solid;
+      background: rgba(99, 102, 241, 0.12);
+      border-radius: 4px;
     }
 
     .badges {
@@ -511,7 +525,8 @@
       <li><a href="#ai">AI & Engine</a></li>
     </ul>
     <div style="display: flex; align-items: center; gap: 1rem;">
-      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme" onclick="toggleTheme()"
+        title="Toggle Dark/Light Mode">
         <span id="themeIcon">🌙</span>
       </button>
       <a href="https://github.com/imCoderAditya/NavoraX" target="_blank" class="btn-github">View GitHub Repository</a>
@@ -521,7 +536,15 @@
   <div class="hero">
     <div class="hero-glow"></div>
     <h1>NavoraX Design System</h1>
-    <p>Complete Flutter Architecture Specification, Parameter Dictionary & Interactive Live Documentation</p>
+    <p>
+      NavoraX is an enterprise-grade, highly customizable Bottom Navigation Design System for Flutter. Rather than just
+      offering a basic collection of static widgets, NavoraX provides a powerful <a href="#parameters"
+        class="hero-link">Navigation Engine</a>, <a href="#templates" class="hero-link">1000+ Template Registry</a>, <a
+        href="#templates" class="hero-link">Navigation Composer (NavoraXNavBuilder)</a>, <a href="#shapes"
+        class="hero-link">Animation & Physics Engine</a>, <a href="#parameters" class="hero-link">Adaptive Mobile Safe
+        Area System</a>, <a href="#parameters" class="hero-link">Context-Aware Navigation Controller</a>, and <a
+        href="#ai" class="hero-link">Smart AI Generation</a> abstractions.
+    </p>
     <div class="badges">
       <span class="badge-chip">Flutter 3.0+ Ready</span>
       <span class="badge-chip">1000+ Pre-built Templates</span>
