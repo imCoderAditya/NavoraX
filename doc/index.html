@@ -168,6 +168,27 @@
       transform: translateY(-2px);
     }
 
+    .btn-pubdev {
+      background: linear-gradient(135deg, #0175C2, #02569B);
+      color: #fff;
+      padding: 0.45rem 1.15rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(1, 117, 194, 0.4);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-pubdev:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(1, 117, 194, 0.6);
+      color: #fff;
+    }
+
     /* Enhanced Hero Section */
     .hero {
       padding: 4.5rem 2rem 3rem;
@@ -636,6 +657,9 @@
         title="Toggle Dark/Light Mode">
         <span id="themeIcon">🌙</span>
       </button>
+      <a href="https://pub.dev/packages/navorax" target="_blank" class="btn-pubdev">
+        <span>📦 pub.dev v1.0.1</span>
+      </a>
     </div>
   </header>
 
@@ -659,6 +683,7 @@
 
     <div class="hero-cta">
       <a href="#quickstart" class="btn-cta-primary">🚀 Get Started</a>
+      <a href="https://pub.dev/packages/navorax" target="_blank" class="btn-pubdev" style="font-size: 1rem; padding: 0.75rem 1.8rem; border-radius: 30px;">📦 View on pub.dev</a>
       <a href="#parameters" class="btn-cta-secondary">🎛️ Search All Parameters</a>
     </div>
 
