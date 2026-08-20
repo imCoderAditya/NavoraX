@@ -6,19 +6,23 @@
   <title>NavoraX — Complete Flutter Bottom Navigation System Documentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #0F172A;
-      --bg-card: rgba(30, 41, 59, 0.7);
-      --bg-glass: rgba(15, 23, 42, 0.85);
-      --accent: #6366F1;
+      --bg-primary: #090D16;
+      --bg-card: rgba(21, 32, 54, 0.75);
+      --bg-card-hover: rgba(30, 45, 77, 0.85);
+      --bg-glass: rgba(9, 13, 22, 0.85);
+      --accent-indigo: #6366F1;
       --accent-glow: #818CF8;
       --accent-cyan: #38BDF8;
       --accent-emerald: #10B981;
+      --accent-rose: #F43F5E;
+      --accent-amber: #F59E0B;
       --text-main: #F8FAFC;
       --text-muted: #94A3B8;
-      --border: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-accent: rgba(99, 102, 241, 0.4);
     }
 
     * {
@@ -28,18 +32,19 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
+    /* Glass Header */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
       background: var(--bg-glass);
       border-bottom: 1px solid var(--border);
       padding: 1rem 2rem;
@@ -52,11 +57,12 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #818CF8, #38BDF8);
+      background: linear-gradient(135deg, #818CF8, #38BDF8, #34D399);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
     }
 
     .nav-links {
@@ -69,32 +75,70 @@
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
     }
 
     .nav-links a:hover {
       color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
     }
 
+    .btn-github {
+      background: linear-gradient(135deg, var(--accent-indigo), #4F46E5);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-github:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 4rem 2rem;
+      padding: 5rem 2rem 3rem;
       text-align: center;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(56, 189, 248, 0.1) 50%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: -1;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 800;
-      margin-bottom: 1rem;
-      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
     }
 
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: var(--text-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .badges {
@@ -102,71 +146,184 @@
       justify-content: center;
       gap: 0.75rem;
       flex-wrap: wrap;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .badge-chip {
-      background: rgba(99, 102, 241, 0.15);
+      background: rgba(99, 102, 241, 0.12);
       border: 1px solid rgba(99, 102, 241, 0.3);
       color: #A5B4FC;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 2rem;
     }
 
     section {
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
     }
 
     .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0.5rem;
+      gap: 0.75rem;
+      letter-spacing: -0.02em;
     }
 
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Grid Layouts */
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
     }
 
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      backdrop-filter: blur(12px);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      border-radius: 20px;
+      padding: 1.75rem;
+      backdrop-filter: blur(16px);
+      transition: all 0.25 ease;
     }
 
     .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
       transform: translateY(-4px);
-      border-color: var(--accent);
     }
 
     .card h3 {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--accent-cyan);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       margin-bottom: 1rem;
+    }
+
+    /* Interactive Simulator */
+    .simulator-card {
+      background: linear-gradient(145deg, #111827, #0F172A);
+      border: 1px solid var(--border-accent);
+      border-radius: 24px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .phone-frame {
+      width: 360px;
+      height: 240px;
+      background: #090D16;
+      border: 3px solid #1E293B;
+      border-radius: 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .phone-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .phone-nav-bar {
+      height: 64px;
+      margin: 10px 14px;
+      border-radius: 20px;
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .sim-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .sim-tab.active {
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .sim-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      width: 16px;
+      height: 3px;
+      background: var(--accent-cyan);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    /* Table Styles */
+    .search-box {
+      width: 100%;
+      padding: 1.1rem 1.75rem;
+      border-radius: 30px;
+      border: 1px solid var(--border-accent);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-main);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-box:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
     }
 
     table {
@@ -174,53 +331,78 @@
       border-collapse: collapse;
       margin: 1.5rem 0;
       background: var(--bg-card);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
     }
 
     th, td {
-      padding: 1rem;
+      padding: 1.1rem;
       text-align: left;
     }
 
     th {
-      background: rgba(30, 41, 59, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       color: var(--accent-cyan);
       font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      border-bottom: 2px solid var(--border);
+    }
+
+    tr {
+      border-bottom: 1px solid var(--border);
     }
 
     tr:nth-child(even) {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.015);
     }
 
     tr:hover {
-      background: rgba(99, 102, 241, 0.05);
+      background: rgba(99, 102, 241, 0.08);
     }
 
     code, pre {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Fira Code', monospace;
     }
 
     code {
-      background: rgba(99, 102, 241, 0.15);
+      background: rgba(99, 102, 241, 0.18);
       color: #A5B4FC;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      font-size: 0.9rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
     }
 
     pre {
-      background: #090D16;
+      background: #060911;
       border: 1px solid var(--border);
-      padding: 1.25rem;
-      border-radius: 12px;
+      padding: 1.5rem;
+      border-radius: 16px;
       overflow-x: auto;
       color: #E2E8F0;
-      font-size: 0.9rem;
-      margin: 1rem 0;
+      font-size: 0.92rem;
+      margin: 1.25rem 0;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-indigo);
+      color: #fff;
     }
 
     .keyword { color: #F472B6; }
@@ -230,27 +412,11 @@
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 2rem;
+      padding: 3rem 2rem;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .search-box {
-      width: 100%;
-      padding: 1rem 1.5rem;
-      border-radius: 30px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.6);
-      color: var(--text-main);
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-
-    .search-box:focus {
-      border-color: var(--accent);
+      font-size: 0.95rem;
+      background: rgba(9, 13, 22, 0.9);
     }
   </style>
 </head>
@@ -267,51 +433,90 @@
       <li><a href="#templates">1000+ Templates</a></li>
       <li><a href="#ai">AI & Engine</a></li>
     </ul>
+    <a href="https://github.com/imCoderAditya/NavoraX" target="_blank" class="btn-github">View GitHub Repository</a>
   </header>
 
   <div class="hero">
+    <div class="hero-glow"></div>
     <h1>NavoraX Design System</h1>
-    <p>Complete Architecture Reference, Class Documentation & Parameter Guide for Flutter Bottom Navigation System</p>
+    <p>Complete Flutter Architecture Specification, Parameter Dictionary & Interactive Live Documentation</p>
     <div class="badges">
       <span class="badge-chip">Flutter 3.0+ Ready</span>
-      <span class="badge-chip">1000+ Templates</span>
+      <span class="badge-chip">1000+ Pre-built Templates</span>
       <span class="badge-chip">Zero Layout Overflows</span>
       <span class="badge-chip">Mobile Safe Area Auto-Inset</span>
       <span class="badge-chip">Glassmorphic Blur Engine</span>
+      <span class="badge-chip">Smart AI Generator</span>
     </div>
   </div>
 
   <div class="container">
 
+    <!-- Interactive Live Simulator -->
+    <section>
+      <h2 class="section-title">📱 Interactive Web Simulator</h2>
+      <p class="section-desc">Click on the bottom navigation tabs inside the simulated mobile screen below to test active indicator animations in real-time!</p>
+      
+      <div class="simulator-card">
+        <div class="phone-frame">
+          <div class="phone-screen" id="simScreen">
+            <span style="font-size: 2.5rem; margin-bottom: 0.5rem;" id="simIcon">🏠</span>
+            <strong id="simTitle" style="color: var(--text-main); font-size: 1.1rem;">Home Screen</strong>
+            <span>Active Index: <span id="simIdx" style="color: var(--accent-cyan); font-weight: 700;">0</span></span>
+          </div>
+          <div class="phone-nav-bar">
+            <div class="sim-tab active" onclick="setSimTab(0, '🏠', 'Home Screen')">
+              <span>🏠</span>
+              <span>Home</span>
+            </div>
+            <div class="sim-tab" onclick="setSimTab(1, '🔍', 'Discover Screen')">
+              <span>🔍</span>
+              <span>Discover</span>
+            </div>
+            <div class="sim-tab" onclick="setSimTab(2, '🛍️', 'Cart Screen (4 items)')">
+              <span>🛍️</span>
+              <span>Cart</span>
+            </div>
+            <div class="sim-tab" onclick="setSimTab(3, '👤', 'Profile Screen')">
+              <span>👤</span>
+              <span>Profile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quickstart Code -->
     <section id="quickstart">
       <h2 class="section-title">🚀 Getting Started</h2>
-      <p>Add <code>navorax</code> package to your Flutter project's <code>pubspec.yaml</code> and build scalable navigation bars in seconds.</p>
+      <p class="section-desc">Add <code>navorax</code> package to your Flutter project's <code>pubspec.yaml</code> and implement customizable bottom navigation bars instantly.</p>
       
-      <pre><code><span class="comment">// 1. Basic NavoraX Widget</span>
+      <pre><code><button class="copy-btn" onclick="copyCode(this)">Copy</button><span class="comment">// 1. Basic NavoraX Widget Implementation</span>
 <span class="type">NavoraX</span>(
   currentIndex: _currentIndex,
   items: <span class="keyword">const</span> [
-    <span class="type">NavoraXItem</span>(icon: Icons.home_outlined, label: <span class="string">'Home'</span>),
-    <span class="type">NavoraXItem</span>(icon: Icons.explore_outlined, label: <span class="string">'Discover'</span>),
-    <span class="type">NavoraXItem</span>(icon: Icons.shopping_bag_outlined, label: <span class="string">'Cart'</span>, badge: <span class="type">NavoraXBadge</span>(type: NavoraXBadgeType.count, count: 4)),
-    <span class="type">NavoraXItem</span>(icon: Icons.person_outline_rounded, label: <span class="string">'Profile'</span>),
+    <span class="type">NavoraXItem</span>(icon: Icons.home_outlined, activeIcon: Icons.home_rounded, label: <span class="string">'Home'</span>),
+    <span class="type">NavoraXItem</span>(icon: Icons.explore_outlined, activeIcon: Icons.explore_rounded, label: <span class="string">'Discover'</span>),
+    <span class="type">NavoraXItem</span>(icon: Icons.shopping_bag_outlined, activeIcon: Icons.shopping_bag_rounded, label: <span class="string">'Cart'</span>, badge: <span class="type">NavoraXBadge</span>(type: NavoraXBadgeType.count, count: 4)),
+    <span class="type">NavoraXItem</span>(icon: Icons.person_outline_rounded, activeIcon: Icons.person_rounded, label: <span class="string">'Profile'</span>),
   ],
   onChanged: (index) => setState(() => _currentIndex = index),
 )</code></pre>
     </section>
 
+    <!-- Parameter Searchable Dictionary -->
     <section id="parameters">
-      <h2 class="section-title">🎛️ Complete Parameter & API Reference</h2>
-      <p>Below is the detailed specification of every parameter, constructor, and function in NavoraX.</p>
+      <h2 class="section-title">🎛️ Exhaustive Parameter & API Dictionary</h2>
+      <p class="section-desc">Search and filter every parameter, configuration option, enum, and engine property available in NavoraX.</p>
 
-      <input type="text" id="paramSearch" class="search-box" placeholder="Search parameters (e.g. shape, indicator, blurAmount, adaptive)..." onkeyup="filterParameters()">
+      <input type="text" id="paramSearch" class="search-box" placeholder="Search parameters (e.g. shape, indicator, blurAmount, adaptive, useSafeArea)..." onkeyup="filterParameters()">
 
       <table id="paramTable">
         <thead>
           <tr>
-            <th>Class / Component</th>
+            <th>Class / Object</th>
             <th>Parameter Name</th>
-            <th>Type</th>
+            <th>DataType</th>
             <th>Default Value</th>
             <th>Description & Usage</th>
           </tr>
@@ -322,28 +527,28 @@
             <td><code>currentIndex</code></td>
             <td><code>int</code></td>
             <td><em>Required</em></td>
-            <td>The zero-based index of the currently active navigation item.</td>
+            <td>Zero-based integer index of the currently active navigation item tab.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
             <td><code>items</code></td>
             <td><code>List&lt;NavoraXItem&gt;</code></td>
             <td><em>Required</em></td>
-            <td>List of item models rendering icons, labels, badges, and tap handlers.</td>
+            <td>List of item models rendering icons, active icons, text labels, badges, and tooltips.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
             <td><code>onChanged</code></td>
             <td><code>ValueChanged&lt;int&gt;</code></td>
             <td><em>Required</em></td>
-            <td>Callback invoked when a tab item is tapped by the user.</td>
+            <td>Callback function triggered when the user taps any navigation item tab.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
             <td><code>template</code></td>
             <td><code>NavoraXTemplateEnum?</code></td>
             <td><code>null</code></td>
-            <td>Selects one of the 1000+ pre-defined template designs (e.g. <code>glassMorph</code>, <code>floatingPill</code>).</td>
+            <td>Selects one of the 1000+ ready-made template presets (e.g. <code>glassMorph</code>, <code>floatingPill</code>, <code>cyberpunk</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
@@ -357,7 +562,7 @@
             <td><code>centerAction</code></td>
             <td><code>NavoraXCenterAction?</code></td>
             <td><code>null</code></td>
-            <td>Notched center Floating Action Button (FAB) config with custom size & icon.</td>
+            <td>Notched center Floating Action Button (FAB) configuration with custom size, icon, shape, and <code>onTap</code>.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
@@ -371,63 +576,70 @@
             <td><code>adaptive</code></td>
             <td><code>bool</code></td>
             <td><code>false</code></td>
-            <td>Enables mobile OS-aware layout scaling, OLED dark adaptation, and accessibility scaling.</td>
+            <td>Enables automatic iOS/Android platform layout adaptation, OLED dark mode, and accessibility font scaling.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
             <td><code>contextAware</code></td>
             <td><code>bool</code></td>
             <td><code>false</code></td>
-            <td>Enables reactive navigation state changes from <code>NavoraXController</code>.</td>
+            <td>Enables reactive navigation state switching via <code>NavoraXController</code> (e.g. checkout, compact, hidden).</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
             <td><code>performanceMode</code></td>
             <td><code>NavoraXPerformanceMode</code></td>
             <td><code>auto</code></td>
-            <td>GPU optimization mode (<code>auto</code>, <code>high</code>, <code>balanced</code>, <code>low</code>) to disable blur on low-end phones.</td>
+            <td>GPU graphics scaling mode (<code>auto</code>, <code>high</code>, <code>balanced</code>, <code>low</code>) to disable blurs on low-end devices.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>gestureMorphing</code></td>
+            <td><code>bool</code></td>
+            <td><code>false</code></td>
+            <td>Allows users to swipe up/down on the navigation bar to expand or compact its height.</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>shape</code></td>
             <td><code>NavoraXShape</code></td>
             <td><code>flat</code></td>
-            <td>Navigation bar geometry (<code>flat</code>, <code>rounded</code>, <code>floating</code>, <code>pill</code>, <code>curved</code>, <code>wave</code>, <code>notched</code>, <code>liquid</code>, <code>dock</code>).</td>
+            <td>Container geometry (<code>flat</code>, <code>rounded</code>, <code>floating</code>, <code>pill</code>, <code>curved</code>, <code>wave</code>, <code>notched</code>, <code>liquid</code>, <code>dock</code>, <code>capsule</code>, <code>stadium</code>, <code>hexagon</code>, <code>asymmetric</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>indicator</code></td>
             <td><code>NavoraXIndicator</code></td>
             <td><code>lineTop</code></td>
-            <td>Active item selection indicator (<code>lineTop</code>, <code>lineBottom</code>, <code>dot</code>, <code>pill</code>, <code>ring</code>, <code>glow</code>, <code>stretchy</code>, <code>liquidBubble</code>).</td>
+            <td>Selection indicator (<code>none</code>, <code>lineTop</code>, <code>lineBottom</code>, <code>dot</code>, <code>pill</code>, <code>ring</code>, <code>glow</code>, <code>stretchy</code>, <code>liquidBubble</code>, <code>backgroundFill</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>animation</code></td>
             <td><code>NavoraXAnimation</code></td>
             <td><code>fade</code></td>
-            <td>Transition animation curve & style (<code>fade</code>, <code>slide</code>, <code>scale</code>, <code>bounce</code>, <code>elastic</code>, <code>spring</code>, <code>morph</code>, <code>magnetic</code>).</td>
+            <td>Transition animation curve & style (<code>fade</code>, <code>slide</code>, <code>scale</code>, <code>bounce</code>, <code>elastic</code>, <code>spring</code>, <code>morph</code>, <code>liquid</code>, <code>pulse</code>, <code>gooey</code>, <code>wave</code>, <code>magnetic</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>backgroundStyle</code></td>
             <td><code>NavoraXBackgroundStyle</code></td>
             <td><code>solid</code></td>
-            <td>Background style (<code>solid</code>, <code>glass</code>, <code>glassMorph</code>, <code>neumorphicFlat</code>, <code>neumorphicConvex</code>, <code>gradient</code>).</td>
+            <td>Background decoration (<code>solid</code>, <code>glass</code>, <code>glassMorph</code>, <code>neumorphicFlat</code>, <code>neumorphicConvex</code>, <code>neumorphicConcave</code>, <code>gradient</code>, <code>transparent</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>height</code></td>
             <td><code>double</code></td>
             <td><code>64.0</code></td>
-            <td>Height of the navigation container in logical pixels.</td>
+            <td>Container height in logical pixels.</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>elevation</code></td>
             <td><code>double</code></td>
             <td><code>4.0</code></td>
-            <td>Shadow elevation depth of the container.</td>
+            <td>Container shadow elevation depth.</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
@@ -441,59 +653,86 @@
             <td><code>activeColor</code></td>
             <td><code>Color?</code></td>
             <td><code>Color(0xFF6366F1)</code></td>
-            <td>Active selected tab icon & label text color.</td>
+            <td>Selected item icon & label color. Automatically adapts in dark mode for high contrast.</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>inactiveColor</code></td>
             <td><code>Color?</code></td>
             <td><code>Color(0xFF94A3B8)</code></td>
-            <td>Unselected tab icon & label text color.</td>
+            <td>Unselected item icon & label color.</td>
           </tr>
         </tbody>
       </table>
     </section>
 
+    <!-- Shapes & Indicators Matrix -->
     <section id="shapes">
-      <h2 class="section-title">📐 Shapes & Selection Indicators Matrix</h2>
+      <h2 class="section-title">📐 Shapes & Indicators Reference</h2>
       <div class="grid-2">
         <div class="card">
           <h3>13 Navigation Shapes</h3>
-          <p>Choose from edge-to-edge flat bars, floating docks, notched center cutouts, curved waves, liquid morphs, and stadium capsules.</p>
+          <p>Choose from traditional flat bars, floating capsule docks, notched center FAB cutouts, sine waves, and asymmetric hexagons.</p>
           <ul>
-            <li><code>NavoraXShape.flat</code></li>
-            <li><code>NavoraXShape.rounded</code></li>
-            <li><code>NavoraXShape.floating</code></li>
-            <li><code>NavoraXShape.pill</code></li>
-            <li><code>NavoraXShape.curved</code></li>
-            <li><code>NavoraXShape.wave</code></li>
-            <li><code>NavoraXShape.notched</code></li>
-            <li><code>NavoraXShape.liquid</code></li>
-            <li><code>NavoraXShape.dock</code></li>
+            <li><code>NavoraXShape.flat</code> — Edge-to-edge full width bar</li>
+            <li><code>NavoraXShape.floating</code> — Floating rounded dock inset</li>
+            <li><code>NavoraXShape.pill</code> — Stretchy rounded pill bar</li>
+            <li><code>NavoraXShape.notched</code> — Center FAB notch cutout</li>
+            <li><code>NavoraXShape.curved</code> — Smooth concave top curve</li>
+            <li><code>NavoraXShape.wave</code> — Dynamic sine wave top</li>
+            <li><code>NavoraXShape.liquid</code> — Bezier liquid flow curve</li>
+            <li><code>NavoraXShape.dock</code> — macOS glass dock bar</li>
           </ul>
         </div>
 
         <div class="card">
           <h3>10 Selection Indicators</h3>
-          <p>Highlight active tabs with sliding line accents, floating dots, icon framing rings, glowing neon halos, and stretchy elastic physics.</p>
+          <p>Highlight active tabs with sliding line accents, floating dots, icon framing rings, glowing halos, and stretchy spring physics.</p>
           <ul>
-            <li><code>NavoraXIndicator.lineTop</code></li>
-            <li><code>NavoraXIndicator.lineBottom</code></li>
-            <li><code>NavoraXIndicator.dot</code></li>
-            <li><code>NavoraXIndicator.pill</code></li>
-            <li><code>NavoraXIndicator.ring</code></li>
-            <li><code>NavoraXIndicator.glow</code></li>
-            <li><code>NavoraXIndicator.stretchy</code></li>
-            <li><code>NavoraXIndicator.liquidBubble</code></li>
+            <li><code>NavoraXIndicator.lineTop</code> — Sliding top line accent</li>
+            <li><code>NavoraXIndicator.lineBottom</code> — Underline tab accent</li>
+            <li><code>NavoraXIndicator.dot</code> — Floating active dot</li>
+            <li><code>NavoraXIndicator.ring</code> — Icon framing ring circle</li>
+            <li><code>NavoraXIndicator.glow</code> — Neon radial halo glow</li>
+            <li><code>NavoraXIndicator.stretchy</code> — Stretchy spring bar</li>
+            <li><code>NavoraXIndicator.liquidBubble</code> — Protruding liquid bubble</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <!-- 1000+ Templates & Builder -->
+    <section id="templates">
+      <h2 class="section-title">🛠️ Navigation Composer (`NavoraXNavBuilder`)</h2>
+      <p class="section-desc">Combine matrix properties using the fluent builder pattern to create custom navigation designs effortlessly.</p>
+
+      <pre><code><button class="copy-btn" onclick="copyCode(this)">Copy</button><span class="keyword">final</span> customConfig = <span class="type">NavoraXNavBuilder</span>()
+  .shape(NavoraXShape.pill)
+  .indicator(NavoraXIndicator.liquidBubble)
+  .animation(NavoraXAnimation.elastic)
+  .background(NavoraXBackgroundStyle.glassMorph)
+  .activeColor(<span class="keyword">const</span> Color(<span class="string">0xFF00F2FE</span>))
+  .height(<span class="string">68.0</span>)
+  .elevation(<span class="string">8.0</span>)
+  .blurAmount(<span class="string">24.0</span>)
+  .borderRadius(BorderRadius.circular(<span class="string">30</span>))
+  .build();
+
+<span class="type">NavoraX</span>(
+  config: customConfig,
+  currentIndex: _currentIndex,
+  items: items,
+  onChanged: onChanged,
+)</code></pre>
+    </section>
+
+    <!-- AI & Controller -->
     <section id="ai">
-      <h2 class="section-title">🤖 AI & Controller Engine</h2>
-      <pre><code><span class="comment">// Generate navigation config using natural language prompt</span>
-<span class="keyword">final</span> aiConfig = <span class="keyword">await</span> <span class="type">NavoraXAI</span>.generate(<span class="string">"Cyan glowing frosted glass floating dock"</span>);
+      <h2 class="section-title">🤖 Smart AI Natural Language Generation</h2>
+      <p class="section-desc">Auto-generate a complete <code>NavoraXConfig</code> instantly using natural language prompts.</p>
+      
+      <pre><code><button class="copy-btn" onclick="copyCode(this)">Copy</button><span class="comment">// Generate config using natural language prompt</span>
+<span class="keyword">final</span> aiConfig = <span class="keyword">await</span> <span class="type">NavoraXAI</span>.generate(<span class="string">"Frosted glass floating bar with cyan neon glow"</span>);
 
 <span class="type">NavoraX</span>(
   config: aiConfig,
@@ -507,9 +746,25 @@
 
   <footer>
     <p>&copy; 2026 NavoraX Design System. Open-Source Flutter Package under MIT License.</p>
+    <p style="margin-top: 0.5rem;"><a href="https://github.com/imCoderAditya/NavoraX" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">GitHub Repository: imCoderAditya/NavoraX</a></p>
   </footer>
 
   <script>
+    function setSimTab(idx, icon, title) {
+      document.getElementById('simIdx').innerText = idx;
+      document.getElementById('simIcon').innerText = icon;
+      document.getElementById('simTitle').innerText = title;
+      
+      const tabs = document.querySelectorAll('.sim-tab');
+      tabs.forEach((tab, i) => {
+        if (i === idx) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+    }
+
     function filterParameters() {
       const query = document.getElementById('paramSearch').value.toLowerCase();
       const rows = document.querySelectorAll('#paramTable tbody tr');
@@ -518,6 +773,16 @@
         const text = row.innerText.toLowerCase();
         row.style.display = text.includes(query) ? '' : 'none';
       });
+    }
+
+    function copyCode(btn) {
+      const codeBlock = btn.parentElement.querySelector('code');
+      const text = codeBlock.innerText.replace('Copy', '');
+      navigator.clipboard.writeText(text);
+      btn.innerText = 'Copied!';
+      setTimeout(() => {
+        btn.innerText = 'Copy';
+      }, 2000);
     }
   </script>
 </body>
