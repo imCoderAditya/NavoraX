@@ -422,11 +422,31 @@
       align-items: center;
       justify-content: center;
       color: var(--text-main);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      gap: 0.25rem;
+    }
+
+    .phone-screen strong {
+      color: var(--text-main);
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
     }
 
     .phone-screen span {
       color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .sim-idx-badge {
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--border-accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
     }
 
     .phone-nav-bar {
@@ -659,9 +679,9 @@
       <div class="simulator-card">
         <div class="phone-frame">
           <div class="phone-screen" id="simScreen">
-            <span style="font-size: 2.5rem; margin-bottom: 0.5rem;" id="simIcon">🏠</span>
-            <strong id="simTitle" style="color: var(--text-main); font-size: 1.1rem;">Home Screen</strong>
-            <span>Active Index: <span id="simIdx" style="color: var(--accent-cyan); font-weight: 700;">0</span></span>
+            <span style="font-size: 2.5rem; margin-bottom: 0.3rem;" id="simIcon">🏠</span>
+            <strong id="simTitle">Home Screen</strong>
+            <span>Active Index: <span id="simIdx" class="sim-idx-badge">0</span></span>
           </div>
           <div class="phone-nav-bar">
             <div class="sim-tab active" onclick="setSimTab(0, '🏠', 'Home Screen')">
