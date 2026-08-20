@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NavoraX — Complete Flutter Bottom Navigation System Documentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg-primary: #090D16;
@@ -336,7 +339,8 @@
       border: 1px solid var(--border);
     }
 
-    th, td {
+    th,
+    td {
       padding: 1.1rem;
       text-align: left;
     }
@@ -362,7 +366,8 @@
       background: rgba(99, 102, 241, 0.08);
     }
 
-    code, pre {
+    code,
+    pre {
       font-family: 'Fira Code', monospace;
     }
 
@@ -405,10 +410,21 @@
       color: #fff;
     }
 
-    .keyword { color: #F472B6; }
-    .type { color: #38BDF8; }
-    .string { color: #34D399; }
-    .comment { color: #64748B; }
+    .keyword {
+      color: #F472B6;
+    }
+
+    .type {
+      color: #38BDF8;
+    }
+
+    .string {
+      color: #34D399;
+    }
+
+    .comment {
+      color: #64748B;
+    }
 
     footer {
       border-top: 1px solid var(--border);
@@ -420,6 +436,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -448,6 +465,9 @@
       <span class="badge-chip">Glassmorphic Blur Engine</span>
       <span class="badge-chip">Smart AI Generator</span>
     </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <img src="navorax_preview_banner.jpg" alt="NavoraX Preview Banner" style="max-width: 100%; border-radius: 20px; border: 1px solid var(--border-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+    </div>
   </div>
 
   <div class="container">
@@ -455,8 +475,9 @@
     <!-- Interactive Live Simulator -->
     <section>
       <h2 class="section-title">📱 Interactive Web Simulator</h2>
-      <p class="section-desc">Click on the bottom navigation tabs inside the simulated mobile screen below to test active indicator animations in real-time!</p>
-      
+      <p class="section-desc">Click on the bottom navigation tabs inside the simulated mobile screen below to test
+        active indicator animations in real-time!</p>
+
       <div class="simulator-card">
         <div class="phone-frame">
           <div class="phone-screen" id="simScreen">
@@ -489,8 +510,9 @@
     <!-- Quickstart Code -->
     <section id="quickstart">
       <h2 class="section-title">🚀 Getting Started</h2>
-      <p class="section-desc">Add <code>navorax</code> package to your Flutter project's <code>pubspec.yaml</code> and implement customizable bottom navigation bars instantly.</p>
-      
+      <p class="section-desc">Add <code>navorax</code> package to your Flutter project's <code>pubspec.yaml</code> and
+        implement customizable bottom navigation bars instantly.</p>
+
       <pre><code><button class="copy-btn" onclick="copyCode(this)">Copy</button><span class="comment">// 1. Basic NavoraX Widget Implementation</span>
 <span class="type">NavoraX</span>(
   currentIndex: _currentIndex,
@@ -507,9 +529,12 @@
     <!-- Parameter Searchable Dictionary -->
     <section id="parameters">
       <h2 class="section-title">🎛️ Exhaustive Parameter & API Dictionary</h2>
-      <p class="section-desc">Search and filter every parameter, configuration option, enum, and engine property available in NavoraX.</p>
+      <p class="section-desc">Search and filter every parameter, configuration option, enum, and engine property
+        available in NavoraX.</p>
 
-      <input type="text" id="paramSearch" class="search-box" placeholder="Search parameters (e.g. shape, indicator, blurAmount, adaptive, useSafeArea)..." onkeyup="filterParameters()">
+      <input type="text" id="paramSearch" class="search-box"
+        placeholder="Search parameters (e.g. shape, indicator, blurAmount, adaptive, useSafeArea)..."
+        onkeyup="filterParameters()">
 
       <table id="paramTable">
         <thead>
@@ -548,7 +573,8 @@
             <td><code>template</code></td>
             <td><code>NavoraXTemplateEnum?</code></td>
             <td><code>null</code></td>
-            <td>Selects one of the 1000+ ready-made template presets (e.g. <code>glassMorph</code>, <code>floatingPill</code>, <code>cyberpunk</code>).</td>
+            <td>Selects one of the 1000+ ready-made template presets (e.g. <code>glassMorph</code>,
+              <code>floatingPill</code>, <code>cyberpunk</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
@@ -562,7 +588,8 @@
             <td><code>centerAction</code></td>
             <td><code>NavoraXCenterAction?</code></td>
             <td><code>null</code></td>
-            <td>Notched center Floating Action Button (FAB) configuration with custom size, icon, shape, and <code>onTap</code>.</td>
+            <td>Notched center Floating Action Button (FAB) configuration with custom size, icon, shape, and
+              <code>onTap</code>.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
@@ -576,21 +603,24 @@
             <td><code>adaptive</code></td>
             <td><code>bool</code></td>
             <td><code>false</code></td>
-            <td>Enables automatic iOS/Android platform layout adaptation, OLED dark mode, and accessibility font scaling.</td>
+            <td>Enables automatic iOS/Android platform layout adaptation, OLED dark mode, and accessibility font
+              scaling.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
             <td><code>contextAware</code></td>
             <td><code>bool</code></td>
             <td><code>false</code></td>
-            <td>Enables reactive navigation state switching via <code>NavoraXController</code> (e.g. checkout, compact, hidden).</td>
+            <td>Enables reactive navigation state switching via <code>NavoraXController</code> (e.g. checkout, compact,
+              hidden).</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
             <td><code>performanceMode</code></td>
             <td><code>NavoraXPerformanceMode</code></td>
             <td><code>auto</code></td>
-            <td>GPU graphics scaling mode (<code>auto</code>, <code>high</code>, <code>balanced</code>, <code>low</code>) to disable blurs on low-end devices.</td>
+            <td>GPU graphics scaling mode (<code>auto</code>, <code>high</code>, <code>balanced</code>,
+              <code>low</code>) to disable blurs on low-end devices.</td>
           </tr>
           <tr>
             <td><code>NavoraX</code></td>
@@ -604,28 +634,36 @@
             <td><code>shape</code></td>
             <td><code>NavoraXShape</code></td>
             <td><code>flat</code></td>
-            <td>Container geometry (<code>flat</code>, <code>rounded</code>, <code>floating</code>, <code>pill</code>, <code>curved</code>, <code>wave</code>, <code>notched</code>, <code>liquid</code>, <code>dock</code>, <code>capsule</code>, <code>stadium</code>, <code>hexagon</code>, <code>asymmetric</code>).</td>
+            <td>Container geometry (<code>flat</code>, <code>rounded</code>, <code>floating</code>, <code>pill</code>,
+              <code>curved</code>, <code>wave</code>, <code>notched</code>, <code>liquid</code>, <code>dock</code>,
+              <code>capsule</code>, <code>stadium</code>, <code>hexagon</code>, <code>asymmetric</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>indicator</code></td>
             <td><code>NavoraXIndicator</code></td>
             <td><code>lineTop</code></td>
-            <td>Selection indicator (<code>none</code>, <code>lineTop</code>, <code>lineBottom</code>, <code>dot</code>, <code>pill</code>, <code>ring</code>, <code>glow</code>, <code>stretchy</code>, <code>liquidBubble</code>, <code>backgroundFill</code>).</td>
+            <td>Selection indicator (<code>none</code>, <code>lineTop</code>, <code>lineBottom</code>, <code>dot</code>,
+              <code>pill</code>, <code>ring</code>, <code>glow</code>, <code>stretchy</code>, <code>liquidBubble</code>,
+              <code>backgroundFill</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>animation</code></td>
             <td><code>NavoraXAnimation</code></td>
             <td><code>fade</code></td>
-            <td>Transition animation curve & style (<code>fade</code>, <code>slide</code>, <code>scale</code>, <code>bounce</code>, <code>elastic</code>, <code>spring</code>, <code>morph</code>, <code>liquid</code>, <code>pulse</code>, <code>gooey</code>, <code>wave</code>, <code>magnetic</code>).</td>
+            <td>Transition animation curve & style (<code>fade</code>, <code>slide</code>, <code>scale</code>,
+              <code>bounce</code>, <code>elastic</code>, <code>spring</code>, <code>morph</code>, <code>liquid</code>,
+              <code>pulse</code>, <code>gooey</code>, <code>wave</code>, <code>magnetic</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
             <td><code>backgroundStyle</code></td>
             <td><code>NavoraXBackgroundStyle</code></td>
             <td><code>solid</code></td>
-            <td>Background decoration (<code>solid</code>, <code>glass</code>, <code>glassMorph</code>, <code>neumorphicFlat</code>, <code>neumorphicConvex</code>, <code>neumorphicConcave</code>, <code>gradient</code>, <code>transparent</code>).</td>
+            <td>Background decoration (<code>solid</code>, <code>glass</code>, <code>glassMorph</code>,
+              <code>neumorphicFlat</code>, <code>neumorphicConvex</code>, <code>neumorphicConcave</code>,
+              <code>gradient</code>, <code>transparent</code>).</td>
           </tr>
           <tr>
             <td><code>NavoraXConfig</code></td>
@@ -672,7 +710,8 @@
       <div class="grid-2">
         <div class="card">
           <h3>13 Navigation Shapes</h3>
-          <p>Choose from traditional flat bars, floating capsule docks, notched center FAB cutouts, sine waves, and asymmetric hexagons.</p>
+          <p>Choose from traditional flat bars, floating capsule docks, notched center FAB cutouts, sine waves, and
+            asymmetric hexagons.</p>
           <ul>
             <li><code>NavoraXShape.flat</code> — Edge-to-edge full width bar</li>
             <li><code>NavoraXShape.floating</code> — Floating rounded dock inset</li>
@@ -687,7 +726,8 @@
 
         <div class="card">
           <h3>10 Selection Indicators</h3>
-          <p>Highlight active tabs with sliding line accents, floating dots, icon framing rings, glowing halos, and stretchy spring physics.</p>
+          <p>Highlight active tabs with sliding line accents, floating dots, icon framing rings, glowing halos, and
+            stretchy spring physics.</p>
           <ul>
             <li><code>NavoraXIndicator.lineTop</code> — Sliding top line accent</li>
             <li><code>NavoraXIndicator.lineBottom</code> — Underline tab accent</li>
@@ -704,7 +744,8 @@
     <!-- 1000+ Templates & Builder -->
     <section id="templates">
       <h2 class="section-title">🛠️ Navigation Composer (`NavoraXNavBuilder`)</h2>
-      <p class="section-desc">Combine matrix properties using the fluent builder pattern to create custom navigation designs effortlessly.</p>
+      <p class="section-desc">Combine matrix properties using the fluent builder pattern to create custom navigation
+        designs effortlessly.</p>
 
       <pre><code><button class="copy-btn" onclick="copyCode(this)">Copy</button><span class="keyword">final</span> customConfig = <span class="type">NavoraXNavBuilder</span>()
   .shape(NavoraXShape.pill)
@@ -729,8 +770,9 @@
     <!-- AI & Controller -->
     <section id="ai">
       <h2 class="section-title">🤖 Smart AI Natural Language Generation</h2>
-      <p class="section-desc">Auto-generate a complete <code>NavoraXConfig</code> instantly using natural language prompts.</p>
-      
+      <p class="section-desc">Auto-generate a complete <code>NavoraXConfig</code> instantly using natural language
+        prompts.</p>
+
       <pre><code><button class="copy-btn" onclick="copyCode(this)">Copy</button><span class="comment">// Generate config using natural language prompt</span>
 <span class="keyword">final</span> aiConfig = <span class="keyword">await</span> <span class="type">NavoraXAI</span>.generate(<span class="string">"Frosted glass floating bar with cyan neon glow"</span>);
 
@@ -746,7 +788,8 @@
 
   <footer>
     <p>&copy; 2026 NavoraX Design System. Open-Source Flutter Package under MIT License.</p>
-    <p style="margin-top: 0.5rem;"><a href="https://github.com/imCoderAditya/NavoraX" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">GitHub Repository: imCoderAditya/NavoraX</a></p>
+    <p style="margin-top: 0.5rem;"><a href="https://github.com/imCoderAditya/NavoraX" target="_blank"
+        style="color: var(--accent-cyan); text-decoration: none;">GitHub Repository: imCoderAditya/NavoraX</a></p>
   </footer>
 
   <script>
@@ -754,7 +797,7 @@
       document.getElementById('simIdx').innerText = idx;
       document.getElementById('simIcon').innerText = icon;
       document.getElementById('simTitle').innerText = title;
-      
+
       const tabs = document.querySelectorAll('.sim-tab');
       tabs.forEach((tab, i) => {
         if (i === idx) {
@@ -768,7 +811,7 @@
     function filterParameters() {
       const query = document.getElementById('paramSearch').value.toLowerCase();
       const rows = document.querySelectorAll('#paramTable tbody tr');
-      
+
       rows.forEach(row => {
         const text = row.innerText.toLowerCase();
         row.style.display = text.includes(query) ? '' : 'none';
@@ -786,4 +829,5 @@
     }
   </script>
 </body>
+
 </html>
