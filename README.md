@@ -8,7 +8,7 @@
 [![Style: Extremely Customizable](https://img.shields.io/badge/Style-1000%2B_Templates-purple.svg)](#1000-ready-made-templates)
 
 > 🌐 **Interactive Web Documentation & Parameter Dictionary**:  
-> 👉 Check out the live interactive documentation at [**NavoraX Documentation**](https://imcoderaditya.github.io/NavoraX/doc/)!
+> 👉 Check out the live interactive documentation at <a href="https://imcoderaditya.github.io/NavoraX/doc/" target="_blank"><strong>NavoraX Documentation</strong></a>!
 
 ![NavoraX Preview Banner](assets/navorax_preview_banner.jpg)
 
@@ -239,7 +239,7 @@ flutter run
 
 For an interactive online parameter dictionary, full class hierarchy reference, live code generator, and search engine for all parameters:
 
-👉 Check out the interactive documentation live at [**NavoraX Documentation**](https://imCoderAditya.github.io/NavoraX/doc/)!
+👉 Check out the interactive documentation live at <a href="https://imCoderAditya.github.io/NavoraX/doc/" target="_blank"><strong>NavoraX Documentation</strong></a>!
 
 ---
 
