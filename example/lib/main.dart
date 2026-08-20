@@ -3,6 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:navorax/navorax.dart';
 
+/// NavoraX Gallery & Design System Demonstration App.
+///
+/// This example application demonstrates:
+/// - 1000+ Ready-made Navigation Templates (`NavoraXTemplateRegistry`).
+/// - Fluent Navigation Composer (`NavoraXNavBuilder`).
+/// - Interactive Live Demo Screen with 4 sample tabs.
+/// - Smart AI Generator (`NavoraXAI.generate()`).
+/// - Light, Dark, and OLED Pitch Black Theme switching.
 void main() {
   runApp(const NavoraXDemoApp());
 }
