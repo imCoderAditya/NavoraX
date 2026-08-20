@@ -165,9 +165,9 @@
       transform: translateY(-2px);
     }
 
-    /* Hero Section */
+    /* Enhanced Hero Section */
     .hero {
-      padding: 5rem 2rem 3rem;
+      padding: 4.5rem 2rem 3rem;
       text-align: center;
       max-width: 1100px;
       margin: 0 auto;
@@ -179,43 +179,122 @@
       top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(56, 189, 248, 0.1) 50%, transparent 70%);
-      filter: blur(60px);
+      width: 650px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, rgba(56, 189, 248, 0.12) 50%, transparent 70%);
+      filter: blur(65px);
       pointer-events: none;
       z-index: -1;
     }
 
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-glow);
+      padding: 0.4rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
+    }
+
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3.6rem;
       font-weight: 800;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.2rem;
       line-height: 1.15;
       letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--text-main) 40%, var(--accent-glow) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .hero p {
-      font-size: 1.1rem;
+    .hero-subtitle {
+      font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 850px;
-      margin: 0 auto 1.5rem auto;
-      line-height: 1.75;
+      max-width: 780px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.6;
     }
 
-    .hero-link {
-      color: var(--accent-cyan);
-      text-decoration: none;
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.2rem;
+    }
+
+    .feature-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.55rem 1.15rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
       font-weight: 600;
-      border-bottom: 1px dashed var(--accent-cyan);
-      transition: all 0.2s ease;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    .hero-link:hover {
-      color: var(--accent-glow);
-      border-bottom-style: solid;
-      background: rgba(99, 102, 241, 0.12);
-      border-radius: 4px;
+    .feature-pill:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.15);
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-primary {
+      background: linear-gradient(135deg, #6366F1, #38BDF8);
+      color: #fff;
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-cta-secondary {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      color: var(--text-main);
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-cta-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-cyan);
+      transform: translateY(-3px);
     }
 
     .badges {
@@ -535,25 +614,27 @@
 
   <div class="hero">
     <div class="hero-glow"></div>
-    <h1>NavoraX Design System</h1>
-    <p>
-      NavoraX is an enterprise-grade, highly customizable Bottom Navigation Design System for Flutter. Rather than just
-      offering a basic collection of static widgets, NavoraX provides a powerful <a href="#parameters"
-        class="hero-link">Navigation Engine</a>, <a href="#templates" class="hero-link">1000+ Template Registry</a>, <a
-        href="#templates" class="hero-link">Navigation Composer (NavoraXNavBuilder)</a>, <a href="#shapes"
-        class="hero-link">Animation & Physics Engine</a>, <a href="#parameters" class="hero-link">Adaptive Mobile Safe
-        Area System</a>, <a href="#parameters" class="hero-link">Context-Aware Navigation Controller</a>, and <a
-        href="#ai" class="hero-link">Smart AI Generation</a> abstractions.
+    <div class="hero-tag">⚡ Enterprise Flutter Design System</div>
+    <h1>NavoraX Bottom Navigation</h1>
+    <p class="hero-subtitle">
+      The Ultimate Bottom Navigation Architecture & Design System for Flutter. Explore 1000+ ready-made templates, matrix composer, physics animations, and AI generator.
     </p>
-    <div class="badges">
-      <span class="badge-chip">Flutter 3.0+ Ready</span>
-      <span class="badge-chip">1000+ Pre-built Templates</span>
-      <span class="badge-chip">Zero Layout Overflows</span>
-      <span class="badge-chip">Mobile Safe Area Auto-Inset</span>
-      <span class="badge-chip">Glassmorphic Blur Engine</span>
-      <span class="badge-chip">Smart AI Generator</span>
+
+    <div class="hero-features">
+      <a href="#parameters" class="feature-pill">⚡ Navigation Engine</a>
+      <a href="#templates" class="feature-pill">🎨 1000+ Templates</a>
+      <a href="#templates" class="feature-pill">🛠️ Builder Composer</a>
+      <a href="#shapes" class="feature-pill">📐 Shapes & Physics</a>
+      <a href="#parameters" class="feature-pill">📱 Safe Area Insets</a>
+      <a href="#ai" class="feature-pill">🤖 Smart AI Generator</a>
     </div>
-    <div style="text-align: center; margin-top: 1.5rem;">
+
+    <div class="hero-cta">
+      <a href="#quickstart" class="btn-cta-primary">🚀 Get Started</a>
+      <a href="#parameters" class="btn-cta-secondary">🎛️ Search All Parameters</a>
+    </div>
+
+    <div style="text-align: center; margin-top: 1rem;">
       <img src="navorax_preview_banner.jpg" alt="NavoraX Preview Banner"
         style="max-width: 100%; border-radius: 20px; border: 1px solid var(--border-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
     </div>
