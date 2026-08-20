@@ -236,7 +236,7 @@ flutter run
 
 For an interactive online parameter dictionary, full class hierarchy reference, live code generator, and search engine for all parameters:
 
-👉 Check out the interactive documentation at [`docs/index.html`](docs/index.html) or host online via GitHub Pages!
+👉 Check out the interactive documentation at [`doc/index.html`](doc/index.html) or host online via GitHub Pages!
 
 ---
 
