@@ -239,7 +239,7 @@ flutter run
 
 For an interactive online parameter dictionary, full class hierarchy reference, live code generator, and search engine for all parameters:
 
-👉 Check out the interactive documentation live at [**navorax.github.io**](https://imCoderAditya.github.io/NavoraX/)!
+👉 Check out the interactive documentation live at [**NavoraX Documentation**](https://imCoderAditya.github.io/NavoraX/)!
 
 ---
 
