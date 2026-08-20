@@ -391,28 +391,28 @@
 
     /* Interactive Simulator */
     .simulator-card {
-      background: linear-gradient(145deg, #111827, #0F172A);
+      background: var(--simulator-bg);
       border: 1px solid var(--border-accent);
       border-radius: 24px;
       padding: 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
     }
 
     .phone-frame {
       width: 360px;
       height: 240px;
-      background: #090D16;
-      border: 3px solid #1E293B;
+      background: var(--phone-bg);
+      border: 3px solid var(--phone-border);
       border-radius: 28px;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .phone-screen {
@@ -421,17 +421,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    .phone-screen span {
       color: var(--text-muted);
-      font-size: 0.9rem;
     }
 
     .phone-nav-bar {
       height: 64px;
       margin: 10px 14px;
       border-radius: 20px;
-      background: rgba(30, 41, 59, 0.85);
+      background: var(--phone-nav-bg);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--border);
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -448,6 +452,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
       position: relative;
+      font-weight: 600;
     }
 
     .sim-tab.active {
