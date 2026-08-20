@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NavoraX — Complete Flutter Bottom Navigation System Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0F172A;
+      --bg-card: rgba(30, 41, 59, 0.7);
+      --bg-glass: rgba(15, 23, 42, 0.85);
+      --accent: #6366F1;
+      --accent-glow: #818CF8;
+      --accent-cyan: #38BDF8;
+      --accent-emerald: #10B981;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: var(--bg-glass);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #818CF8, #38BDF8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .badge-chip {
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #A5B4FC;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(30, 41, 59, 0.9);
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    tr:hover {
+      background: rgba(99, 102, 241, 0.05);
+    }
+
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    code {
+      background: rgba(99, 102, 241, 0.15);
+      color: #A5B4FC;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    pre {
+      background: #090D16;
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 12px;
+      overflow-x: auto;
+      color: #E2E8F0;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+
+    .keyword { color: #F472B6; }
+    .type { color: #38BDF8; }
+    .string { color: #34D399; }
+    .comment { color: #64748B; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--text-main);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-box:focus {
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span>⚡ NavoraX</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#quickstart">Quickstart</a></li>
+      <li><a href="#parameters">All Parameters</a></li>
+      <li><a href="#shapes">Shapes & Indicators</a></li>
+      <li><a href="#templates">1000+ Templates</a></li>
+      <li><a href="#ai">AI & Engine</a></li>
+    </ul>
+  </header>
+
+  <div class="hero">
+    <h1>NavoraX Design System</h1>
+    <p>Complete Architecture Reference, Class Documentation & Parameter Guide for Flutter Bottom Navigation System</p>
+    <div class="badges">
+      <span class="badge-chip">Flutter 3.0+ Ready</span>
+      <span class="badge-chip">1000+ Templates</span>
+      <span class="badge-chip">Zero Layout Overflows</span>
+      <span class="badge-chip">Mobile Safe Area Auto-Inset</span>
+      <span class="badge-chip">Glassmorphic Blur Engine</span>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section id="quickstart">
+      <h2 class="section-title">🚀 Getting Started</h2>
+      <p>Add <code>navorax</code> package to your Flutter project's <code>pubspec.yaml</code> and build scalable navigation bars in seconds.</p>
+      
+      <pre><code><span class="comment">// 1. Basic NavoraX Widget</span>
+<span class="type">NavoraX</span>(
+  currentIndex: _currentIndex,
+  items: <span class="keyword">const</span> [
+    <span class="type">NavoraXItem</span>(icon: Icons.home_outlined, label: <span class="string">'Home'</span>),
+    <span class="type">NavoraXItem</span>(icon: Icons.explore_outlined, label: <span class="string">'Discover'</span>),
+    <span class="type">NavoraXItem</span>(icon: Icons.shopping_bag_outlined, label: <span class="string">'Cart'</span>, badge: <span class="type">NavoraXBadge</span>(type: NavoraXBadgeType.count, count: 4)),
+    <span class="type">NavoraXItem</span>(icon: Icons.person_outline_rounded, label: <span class="string">'Profile'</span>),
+  ],
+  onChanged: (index) => setState(() => _currentIndex = index),
+)</code></pre>
+    </section>
+
+    <section id="parameters">
+      <h2 class="section-title">🎛️ Complete Parameter & API Reference</h2>
+      <p>Below is the detailed specification of every parameter, constructor, and function in NavoraX.</p>
+
+      <input type="text" id="paramSearch" class="search-box" placeholder="Search parameters (e.g. shape, indicator, blurAmount, adaptive)..." onkeyup="filterParameters()">
+
+      <table id="paramTable">
+        <thead>
+          <tr>
+            <th>Class / Component</th>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Default Value</th>
+            <th>Description & Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>currentIndex</code></td>
+            <td><code>int</code></td>
+            <td><em>Required</em></td>
+            <td>The zero-based index of the currently active navigation item.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>items</code></td>
+            <td><code>List&lt;NavoraXItem&gt;</code></td>
+            <td><em>Required</em></td>
+            <td>List of item models rendering icons, labels, badges, and tap handlers.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>onChanged</code></td>
+            <td><code>ValueChanged&lt;int&gt;</code></td>
+            <td><em>Required</em></td>
+            <td>Callback invoked when a tab item is tapped by the user.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>template</code></td>
+            <td><code>NavoraXTemplateEnum?</code></td>
+            <td><code>null</code></td>
+            <td>Selects one of the 1000+ pre-defined template designs (e.g. <code>glassMorph</code>, <code>floatingPill</code>).</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>config</code></td>
+            <td><code>NavoraXConfig?</code></td>
+            <td><code>null</code></td>
+            <td>Custom configuration built via <code>NavoraXNavBuilder</code> or <code>.copyWith()</code>.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>centerAction</code></td>
+            <td><code>NavoraXCenterAction?</code></td>
+            <td><code>null</code></td>
+            <td>Notched center Floating Action Button (FAB) config with custom size & icon.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>useSafeArea</code></td>
+            <td><code>bool</code></td>
+            <td><code>true</code></td>
+            <td>Automatically adds bottom safe area inset padding for iOS Home Indicators & Android Gesture Bars.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>adaptive</code></td>
+            <td><code>bool</code></td>
+            <td><code>false</code></td>
+            <td>Enables mobile OS-aware layout scaling, OLED dark adaptation, and accessibility scaling.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>contextAware</code></td>
+            <td><code>bool</code></td>
+            <td><code>false</code></td>
+            <td>Enables reactive navigation state changes from <code>NavoraXController</code>.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraX</code></td>
+            <td><code>performanceMode</code></td>
+            <td><code>NavoraXPerformanceMode</code></td>
+            <td><code>auto</code></td>
+            <td>GPU optimization mode (<code>auto</code>, <code>high</code>, <code>balanced</code>, <code>low</code>) to disable blur on low-end phones.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>shape</code></td>
+            <td><code>NavoraXShape</code></td>
+            <td><code>flat</code></td>
+            <td>Navigation bar geometry (<code>flat</code>, <code>rounded</code>, <code>floating</code>, <code>pill</code>, <code>curved</code>, <code>wave</code>, <code>notched</code>, <code>liquid</code>, <code>dock</code>).</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>indicator</code></td>
+            <td><code>NavoraXIndicator</code></td>
+            <td><code>lineTop</code></td>
+            <td>Active item selection indicator (<code>lineTop</code>, <code>lineBottom</code>, <code>dot</code>, <code>pill</code>, <code>ring</code>, <code>glow</code>, <code>stretchy</code>, <code>liquidBubble</code>).</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>animation</code></td>
+            <td><code>NavoraXAnimation</code></td>
+            <td><code>fade</code></td>
+            <td>Transition animation curve & style (<code>fade</code>, <code>slide</code>, <code>scale</code>, <code>bounce</code>, <code>elastic</code>, <code>spring</code>, <code>morph</code>, <code>magnetic</code>).</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>backgroundStyle</code></td>
+            <td><code>NavoraXBackgroundStyle</code></td>
+            <td><code>solid</code></td>
+            <td>Background style (<code>solid</code>, <code>glass</code>, <code>glassMorph</code>, <code>neumorphicFlat</code>, <code>neumorphicConvex</code>, <code>gradient</code>).</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>height</code></td>
+            <td><code>double</code></td>
+            <td><code>64.0</code></td>
+            <td>Height of the navigation container in logical pixels.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>elevation</code></td>
+            <td><code>double</code></td>
+            <td><code>4.0</code></td>
+            <td>Shadow elevation depth of the container.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>blurAmount</code></td>
+            <td><code>double</code></td>
+            <td><code>16.0</code></td>
+            <td>Backdrop filter blur intensity for glassmorphic styles.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>activeColor</code></td>
+            <td><code>Color?</code></td>
+            <td><code>Color(0xFF6366F1)</code></td>
+            <td>Active selected tab icon & label text color.</td>
+          </tr>
+          <tr>
+            <td><code>NavoraXConfig</code></td>
+            <td><code>inactiveColor</code></td>
+            <td><code>Color?</code></td>
+            <td><code>Color(0xFF94A3B8)</code></td>
+            <td>Unselected tab icon & label text color.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="shapes">
+      <h2 class="section-title">📐 Shapes & Selection Indicators Matrix</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>13 Navigation Shapes</h3>
+          <p>Choose from edge-to-edge flat bars, floating docks, notched center cutouts, curved waves, liquid morphs, and stadium capsules.</p>
+          <ul>
+            <li><code>NavoraXShape.flat</code></li>
+            <li><code>NavoraXShape.rounded</code></li>
+            <li><code>NavoraXShape.floating</code></li>
+            <li><code>NavoraXShape.pill</code></li>
+            <li><code>NavoraXShape.curved</code></li>
+            <li><code>NavoraXShape.wave</code></li>
+            <li><code>NavoraXShape.notched</code></li>
+            <li><code>NavoraXShape.liquid</code></li>
+            <li><code>NavoraXShape.dock</code></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>10 Selection Indicators</h3>
+          <p>Highlight active tabs with sliding line accents, floating dots, icon framing rings, glowing neon halos, and stretchy elastic physics.</p>
+          <ul>
+            <li><code>NavoraXIndicator.lineTop</code></li>
+            <li><code>NavoraXIndicator.lineBottom</code></li>
+            <li><code>NavoraXIndicator.dot</code></li>
+            <li><code>NavoraXIndicator.pill</code></li>
+            <li><code>NavoraXIndicator.ring</code></li>
+            <li><code>NavoraXIndicator.glow</code></li>
+            <li><code>NavoraXIndicator.stretchy</code></li>
+            <li><code>NavoraXIndicator.liquidBubble</code></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <h2 class="section-title">🤖 AI & Controller Engine</h2>
+      <pre><code><span class="comment">// Generate navigation config using natural language prompt</span>
+<span class="keyword">final</span> aiConfig = <span class="keyword">await</span> <span class="type">NavoraXAI</span>.generate(<span class="string">"Cyan glowing frosted glass floating dock"</span>);
+
+<span class="type">NavoraX</span>(
+  config: aiConfig,
+  currentIndex: _currentIndex,
+  items: items,
+  onChanged: onChanged,
+)</code></pre>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 NavoraX Design System. Open-Source Flutter Package under MIT License.</p>
+  </footer>
+
+  <script>
+    function filterParameters() {
+      const query = document.getElementById('paramSearch').value.toLowerCase();
+      const rows = document.querySelectorAll('#paramTable tbody tr');
+      
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
